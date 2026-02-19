@@ -7,7 +7,7 @@ Create and manage expenses on Splitwise directly from your OpenClaw agent.
 ## Installation
 
 ```bash
-clawhub install splitwise-public
+clawhub install splitwise
 ```
 
 ## Configuration

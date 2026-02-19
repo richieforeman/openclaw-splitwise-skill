@@ -1,5 +1,5 @@
 ---
-name: splitwise-public
+name: splitwise
 description: Create and manage expenses on Splitwise. Use this skill when the user wants to log a new expense, split a bill, or check their Splitwise balance.
 homepage: https://github.com/richieforeman/openclaw-splitwise-skill
 metadata:
