@@ -4,6 +4,12 @@ import json
 import urllib.request
 import argparse
 
+# SECURITY MANIFEST:
+#   Environment variables accessed: SPLITWISE_API_KEY (only)
+#   External endpoints called: https://secure.splitwise.com/ (only)
+#   Local files read: none
+#   Local files written: none
+
 def main():
     parser = argparse.ArgumentParser(description="Add an expense to Splitwise")
     parser.add_argument("--cost", required=True, help="Total cost")

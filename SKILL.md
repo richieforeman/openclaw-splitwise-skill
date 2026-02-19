@@ -1,6 +1,14 @@
 ---
-name: splitwise
+name: splitwise-public
 description: Create and manage expenses on Splitwise. Use this skill when the user wants to log a new expense, split a bill, or check their Splitwise balance.
+homepage: https://github.com/richieforeman/openclaw-splitwise-skill
+metadata:
+  clawdbot:
+    emoji: "💸"
+    requires:
+      env: ["SPLITWISE_API_KEY"]
+    primaryEnv: "SPLITWISE_API_KEY"
+    files: ["scripts/*"]
 ---
 
 # Splitwise Skill
@@ -10,6 +18,18 @@ This skill allows an agent to interact with the Splitwise API to automate shared
 ## Requirements
 
 - `SPLITWISE_API_KEY`: A Long-lived User Token obtained from the [Splitwise Developer Console](https://secure.splitwise.com/apps).
+
+## External Endpoints
+
+| URL | Purpose | Data Sent |
+|-----|---------|-----------|
+| `https://secure.splitwise.com/api/v3.0/create_expense` | Create a new expense | Cost, description, user IDs, shares, and group ID. |
+
+## Security & Privacy
+
+- **Data Outbound**: This skill sends expense details (cost, description, user IDs) to the Splitwise API.
+- **Credentials**: Your `SPLITWISE_API_KEY` is sent in the `Authorization` header to Splitwise. It never leaves the machine except to communicate with the official Splitwise API.
+- **Input**: User input for cost and description is handled safely by the Python `urllib.request` and `argparse` libraries.
 
 ## Usage
 
@@ -22,7 +42,7 @@ python3 {baseDir}/scripts/add_expense.py \
   --desc "Lunch" \
   --payer_id "12345" \
   --other_id "67890" \
-  --via "agent-name"
+  --via "whisker"
 ```
 
 ### Parameters
@@ -38,3 +58,9 @@ python3 {baseDir}/scripts/add_expense.py \
 2. Generate a "Long-lived User Token".
 3. Store it as `SPLITWISE_API_KEY`.
 4. Use the API to find your User IDs and Group IDs.
+
+## Model Invocation Note
+This skill is designed for autonomous invocation by AI models. The model will automatically determine when to call these tools based on user requests (e.g., "split the $20 lunch with Nancy").
+
+## Trust Statement
+By using this skill, data is sent to Splitwise. Only install this skill if you trust Splitwise with your expense data.
