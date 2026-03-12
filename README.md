@@ -28,3 +28,4 @@ Ask your agent to:
 - **Automated 50/50 Splits**: Automatically calculates shares for two users.
 - **Group Support**: Log expenses to specific Splitwise groups.
 - **Secure**: Uses Python scripts for safe API interaction.
+- **Multi-Currency Support**: Optionally specify an ISO currency code (defaults to USD).

@@ -18,8 +18,18 @@ def main():
     parser.add_argument("--other_id", required=True, help="User ID of the other person")
     parser.add_argument("--group_id", help="Optional group ID")
     parser.add_argument("--via", help="Custom 'via' suffix (e.g., 'whisker')")
+    parser.add_argument(
+        "--currency",
+        default="USD",
+        help="3-letter ISO currency code (defaults to USD)",
+    )
     
     args = parser.parse_args()
+
+    currency = args.currency.upper()
+    if len(currency) != 3 or not currency.isalpha():
+        print("ERROR: --currency must be a 3-letter ISO currency code (e.g., USD, EUR, GBP).")
+        sys.exit(1)
     
     token = os.environ.get("SPLITWISE_API_KEY")
     if not token:
@@ -40,7 +50,7 @@ def main():
     data = {
         "cost": args.cost,
         "description": description,
-        "currency_code": "USD",
+        "currency_code": currency,
         "users__0__user_id": args.payer_id,
         "users__0__paid_share": args.cost,
         "users__0__owed_share": str(share),

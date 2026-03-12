@@ -42,7 +42,8 @@ python3 {baseDir}/scripts/add_expense.py \
   --desc "Lunch" \
   --payer_id "12345" \
   --other_id "67890" \
-  --via "whisker"
+  --via "whisker" \
+  --currency "EUR"
 ```
 
 ### Parameters
@@ -52,6 +53,7 @@ python3 {baseDir}/scripts/add_expense.py \
 - `--other_id`: The Splitwise User ID of the person being split with.
 - `--group_id`: (Optional) The ID of a specific Splitwise group.
 - `--via`: (Optional) Appends "(via name)" to the description.
+- `--currency`: (Optional) 3-letter ISO currency code (defaults to `USD`).
 
 ## Setup for Agents
 1. Create a Splitwise App at `https://secure.splitwise.com/apps`.
